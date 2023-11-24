@@ -1,0 +1,80 @@
+-- PostgreSQL
+SET SEARCH_PATH TO QuintWeb;
+
+
+
+-- CLIENTE(NIF, Nome, Email, Telemovel, Morada, Pais, TipoDeCliente)
+INSERT INTO CLIENTE VALUES (234535, 'Maria', 'mariasapateiros@email.com', 111111111 , 'Rua dos sapateiros', 'Portugal', 'Individual');
+INSERT INTO CLIENTE VALUES (754345, 'John', 'johnrightstreet@email.com', 222222222 , 'right street', 'United Kingdom', 'Individual');
+INSERT INTO CLIENTE VALUES (217769, 'Teresa', 'teresacastelo@email.com', 333333333, 'Rua do castelo', 'Portugal', 'Individual');
+INSERT INTO CLIENTE VALUES (328761, 'Pedro', 'pedroaliados@email.com', 444444444, 'Avenida dos aliados', 'Portugal', 'Individual');
+INSERT INTO CLIENTE VALUES (100005, 'Luis', 'luisruadoluis@email.com' ,555555555, 'Rua do Luis', 'Portugal', 'Individual');
+
+
+-- ENCOMENDA(IDEncomenda, Data, TipoDeEncomenda, IDCliente)
+INSERT INTO ENCOMENDA VALUES (1, 2020-05-29, 'Agrícula', 234535 );
+INSERT INTO ENCOMENDA VALUES (2, 2019-05-29, 'Agrícula', 234535);
+INSERT INTO ENCOMENDA VALUES (3, 2020-08-03, 'Agrícula', 754345);
+INSERT INTO ENCOMENDA VALUES (4, 2019-01-21, 'Agrícula', 754345);
+INSERT INTO ENCOMENDA VALUES (5, 2019-04-13, 'Agrícula', 754345);
+INSERT INTO ENCOMENDA VALUES (6, 2020-11-31, 'Pecuaria', 217769);
+INSERT INTO ENCOMENDA VALUES (7, 2018-01-01, 'Pecuaria', 217769);
+INSERT INTO ENCOMENDA VALUES (8, 2019-10-10, 'Agrícula', 754345);
+
+
+-- PRODUTO(IDProduto, Custo, Designacao, Quantidade, TipoDeProduto, NEncomenda)
+INSERT INTO PRODUTO VALUES (10, 23, 'Batatas', 6, 'Agricula', 1);
+INSERT INTO PRODUTO VALUES (2, 10, 'Arroz', 1, 'Agricula', 2);
+INSERT INTO PRODUTO VALUES (10, 23, 'Batatas', 200, 'Agricula', 3);
+INSERT INTO PRODUTO VALUES (12, 56, 'Feijao verde', 800, 'Agricula', 4);
+INSERT INTO PRODUTO VALUES (10, 23, 'Batatas', 2500, 'Agricula', 5);
+INSERT INTO PRODUTO VALUES (20, 123, 'Galinhas', 2, 'Pecuario', 6);
+INSERT INTO PRODUTO VALUES (11, 12, 'Gansos', 4, 'Pecuario', 7);
+INSERT INTO PRODUTO VALUES (2, 10, 'Arroz', 3, 'Agricula', 8);
+
+
+
+-- LOTE(NomeUnico, Area, DataDeMaturacao, QuantidadePrevista, ProdutoDeCultivo, NProduto)
+INSERT INTO LOTE VALUES ('Lote das Batatas', 20, 180, 100000, 'Batatas', 10);
+INSERT INTO LOTE VALUES ('Lote do Arroz', 30, 120, 200000, 'Arroz', 2);
+INSERT INTO LOTE VALUES ('Lote do Feijao', 40, 100, 300000, 'Feijao verde', 12);
+
+
+--REGISTODEPAGAMENTO(TempoDePagamento, EstadoDePagamento, NEncomenda)
+INSERT INTO REGISTODEPAGAMENTO VALUES (2020-06-29, 'Pago', 1);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2019-06-29, 'Pago', 2);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2020-09-03, 'Pago', 3);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2019-02-21, 'Pago', 4);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2019-05-13, 'Pago', 5);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2020-12-31, 'Anulado', 6);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2018-02-01, 'Anulado', 7);
+INSERT INTO REGISTODEPAGAMENTO VALUES (2019-11-10, 'Pago', 8);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

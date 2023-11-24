@@ -1,0 +1,62 @@
+-- PostgreSQL
+-- #### Schema ou Database ####
+
+-- DROP SCHEMA QuintWeb CASCADE;
+
+-- #### Cria a base de dados QuintWeb ####
+CREATE SCHEMA QuintWeb;
+
+-- #### Posiciona como Database corrente ####
+-- Torna a execução independente da seleção acima: 'Active Catalog/Schema'
+SET search_path TO QuintWeb;
+
+-- O Esquema da base de dados QUINTWEB
+CREATE TABLE ENCOMENDA (
+	IDEncomenda int NOT NULL, 
+	Data date, 
+	TipoDeEncomenda varchar(255) NOT NULL,
+	IDCliente int NOT NULL
+	PRIMARY KEY (IDEncomenda),
+  	FOREIGN KEY (IDCliente) REFERENCES Cliente (NIF)
+);
+
+CREATE TABLE PRODUTO (
+	IDProduto int NOT NULL, 
+	Custo float NOT NULL, 
+	Designacao varchar(255) UNIQUE NOT NULL, 
+	Quantidade int NOT NULL,
+	TipoDeProduto varchar(255) NOT NULL,
+	NEncomenda int NOT NULL, 
+	PRIMARY KEY (IDProduto),
+	FOREIGN KEY (NEncomenda) REFERENCES ENCOMENDA (IDEncomenda)
+);
+
+CREATE TABLE CLIENTE (
+	NIF int NOT NULL,  
+	Nome varchar(255) NOT NULL,  
+	Email varchar(255) UNIQUE NOT NULL,
+	Telemovel int UNIQUE NOT NULL,
+	Morada varchar(255) NOT NULL,
+	Pais varchar(255) NOT NULL,
+	TipoDeCliente varchar(255) NOT NULL,
+	PRIMARY KEY (NIF)
+);
+ 
+CREATE TABLE LOTE (
+	NomeUnico varchar(255) NOT NULL, 
+	Area int NOT NULL,
+	DataDeMaturacao int NOT NULL,
+	QuantidadePrevista int NOT NULL,
+	ProdutoCultivo varchar(255) NOT NULL,
+	NProduto int NOT NULL,
+	PRIMARY KEY (NomeUnico),
+	FOREIGN KEY (NProduto) REFERENCES PRODUTO (IDProduto)
+);
+
+CREATE TABLE REGISTODEPAGAMENTO (
+	TempoDePagamento date,
+	EstadoDePagamento Boolean,
+	NEncomenda int NOT NULL,
+	PRIMARY KEY (NEncomenda),
+	FOREIGN KEY (NEncomenda) REFERENCES ENCOMENDA (IDEncomenda)
+);

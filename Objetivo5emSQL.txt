@@ -1,0 +1,59 @@
+5)
+	ano-mes-dia
+	DATA Y antes da DATA X
+	CLIENTE Z > valor de Z é NIF
+
+
+
+	CREATE TEMPORARY TABLE ClienteData
+	SELECT *
+	FROM CLIENTE, ENCOMENDA
+	WHERE ( SELECT Data
+		FROM Encomenda
+		WHERE (Data <= XXXX-XX-XX) AND (Data >= YYYY-YY-YY))
+
+
+	CREATE TEMPORARY TABLE ClienteZ
+	SELECT *
+	FROM CLIENTE, ENCOMENDA
+	WHERE (NIF ="ZZZZ")
+
+	
+	CREATE TEMPORARY TABLE Result
+	(SELECT * FROM ClienteZ) MINUS (SELECT * FROM ClienteData)
+	
+
+	SELECT *
+	FROM Result
+
+
+------------------------------------------------------------------------------------
+
+	Cliente Z > valor de Z é NIF
+	TipoDeCliente > TipoDeCliente valor X é "Individual" ou "Empresa"
+	
+
+	CREATE TEMPORARY TABLE ClienteZ
+	SELECT *
+	FROM CLIENTE, ENCOMENDA
+	WHERE (NIF ="ZZZZ")
+
+
+	CREATE TEMPORARY TABLE TipoDeCliente
+	SELECT *
+	FROM CLIENTE, ENCOMENDA
+	WHERE (TipoDeCliente = "XXXXXXXX")
+
+
+	CREATE TEMPORARY TABLE Result
+	(SELECT * FROM ClienteZ) MINUS (SELECT * FROM TipoDeCliente)
+	
+
+	SELECT *
+	FROM Result	
+
+
+
+------------------------------------------------------------------------------------
+
+
